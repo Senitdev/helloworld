@@ -9,9 +9,15 @@ import (
 type UserRepository interface {
 	Save(user model.User) error
 	GetAllUser() ([]model.User, error)
+	GetUserById(id int) (model.User, error)
 }
 type userRepostory struct {
 	DB *gorm.DB
+}
+
+// GetUserById implements [UserRepository].
+func (u *userRepostory) GetUserById(id int) (model.User, error) {
+	panic("unimplemented")
 }
 
 // GetAllUser implements [UserRepository].

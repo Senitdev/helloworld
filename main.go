@@ -6,6 +6,8 @@ import (
 	"helloword/setup"
 	"net/http"
 	"os"
+
+	"github.com/gin-contrib/pprof"
 )
 
 func main() {
@@ -20,6 +22,9 @@ func main() {
 	if port == "" {
 		port = "8090"
 	}
+
+	// pprof
+	pprof.Register(r)
 	r.Run(":" + port)
 	fmt.Printf("Server Running at port %s", port)
 }

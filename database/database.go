@@ -29,6 +29,15 @@ func Connect() {
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
 		PrepareStmt: true,
 	})
+	// 🔥 RÉCUPÉRATION SQL DB (IMPORTANT)
+	/*
+		sqlDB, err := db.DB()
+
+		// 🔥 CONFIG DU POOL
+		sqlDB.SetMaxOpenConns(150)
+		sqlDB.SetMaxIdleConns(50)
+		sqlDB.SetConnMaxLifetime(time.Minute * 5)
+		sqlDB.SetConnMaxIdleTime(time.Minute * 30)*/
 	fmt.Printf("adresse ip : ENV  %s %s  %s", os.Getenv("APP_ENV"), os.Getenv("DB_HOST"), os.Getenv("DB_NAME"))
 	if err != nil {
 		log.Fatal("Impossible de se connecter à la base de données :", err)
